@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">ValueTown</string>
+    <string name="app_name_b">Value Town</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+    <!-- nav menu -->
+    <!-- nav menu:button -->
+    <string name="store">Store</string>
+    <string name="users">Users</string>
+    <string name="mystore">My store</string>
+    <string name="setting">Settings</string>
+    <!-- nav menu:toast -->
+    <string name="toaststore">Store tab selected</string>
+    <string name="toastusers">Users tab selected </string>
+    <string name="toastmystore">My store tab selected</string>
+    <string name="toastsetting">Setting tab selected</string>
+    <!-- swipe tabs -->
+    <string name="sales">Sales</string>
+    <string name="menu">Menus</string>
+    <string name="starter">Starters</string>
+    <string name="maincourse">Main Courses</string>
+    <string name="dessert">Desserts</string>
+    <string name="beverages">beverages</string>
+</resources>
