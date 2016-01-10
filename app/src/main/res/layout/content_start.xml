@@ -13,8 +13,10 @@
     tools:showIn="@layout/app_bar_start"
     tools:context="mobile.valuetown.StartActivity">
 
-    <TextView
-        android:text="Hello World!"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent" android:layout_height="match_parent">
+        <fragment class="mobile.valuetown.StartActivity$TitlesFragment"
+            android:id="@+id/titles"
+            android:layout_width="match_parent" android:layout_height="match_parent" />
+    </FrameLayout>
 </RelativeLayout>

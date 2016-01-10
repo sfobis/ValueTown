@@ -1,11 +1,10 @@
 package mobile.valuetown;
 
-import android.app.ListFragment;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
+import android.view.View;
+import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -13,27 +12,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.widget.Toast;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.ArrayList;
-
-import mobile.valuetown.async.DownloadTask;
-import mobile.valuetown.meta.AsyncResponse;
-
-public class StartActivity extends AppCompatActivity
+public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_start);
+        setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -69,7 +56,7 @@ public class StartActivity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.start, menu);
+        getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
 
@@ -108,58 +95,4 @@ public class StartActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-
-
-    public static class TitlesFragment extends ListFragment implements AsyncResponse {
-        int mCurCheckPosition = 0;
-        public String[] store;
-
-        @Override
-        public void onActivityCreated(Bundle savedInstanceState) {
-            super.onActivityCreated(savedInstanceState);
-
-            //Requete
-            String stringQ = "select ville from store";
-
-            //thread asynctask pour la requete
-            DownloadTask dt = new DownloadTask(this);
-
-            //appel a doItBackground
-            dt.execute(stringQ);
-
-        }
-
-        @Override
-        public void onListItemClick(ListView l, View v, int position, long id) {
-            chooseStore(position);
-        }
-
-        void chooseStore(int index) {
-            mCurCheckPosition = index;
-            Intent intent = new Intent();
-            intent.setClass(getActivity(), MainActivity.class);
-            intent.putExtra("index", index);
-            startActivity(intent);
-        }
-
-        public void processFinish(String result) {
-            ArrayList<String> store = new ArrayList<String>();
-            try {
-                JSONArray res = null;
-                res = new JSONArray(result);
-
-                for (int i = 0; i < res.length(); i++) {
-                    //Pour chaque row.
-                    JSONObject row = res.getJSONObject(i);
-                    store.add(row.getString("ville"));
-                }
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-            setListAdapter(new ArrayAdapter<String>(getActivity(),
-                    android.R.layout.simple_list_item_activated_1, store));
-        }
-    }
 }
-
-

@@ -25,4 +25,6 @@
     <string name="maincourse">Main Courses</string>
     <string name="dessert">Desserts</string>
     <string name="beverages">beverages</string>
+    <string name="title_activity_store_detail">StoreDetailActivity</string>
+    <string name="title_activity_main">MainActivity</string>
 </resources>
