@@ -5,7 +5,8 @@ package mobile.valuetown.bdd;
  */
 public class User {
 
-    private static User instance = new User();;
+    //singleton
+    private static User instance = new User();
 
     private  String name;
     private  String surname;
@@ -13,18 +14,18 @@ public class User {
     private  String code;
 
     private User(){
-        name = "Your name";
-        surname = "Your Surname";
-        addr = "Your Address";
-        code = "Your city code";
+        name = "";
+        surname = "";
+        addr = "";
+        code = "";
 
     }
-
 
     public static User getInstance() {
         return instance;
     }
 
+    //méthodes
     public String getName() {
         return name;
     }

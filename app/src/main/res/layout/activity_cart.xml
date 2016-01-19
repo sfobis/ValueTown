@@ -23,7 +23,8 @@
 
     <fragment class="mobile.valuetown.CartActivity$TitlesFragment"
         android:id="@+id/titles"
-        android:layout_width="match_parent" android:layout_height="match_parent" />
+        android:layout_width="match_parent" android:layout_height="match_parent"
+        android:layout_marginTop="57dp"/>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"

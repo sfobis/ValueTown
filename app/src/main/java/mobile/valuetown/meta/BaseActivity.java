@@ -3,7 +3,6 @@ package mobile.valuetown.meta;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import mobile.valuetown.bdd.Cart;
 import mobile.valuetown.bdd.StoreBdd;
 
 /**
@@ -12,7 +11,6 @@ import mobile.valuetown.bdd.StoreBdd;
 public class BaseActivity extends AppCompatActivity {
 
     public static StoreBdd sBDD;
-    public static Cart cart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

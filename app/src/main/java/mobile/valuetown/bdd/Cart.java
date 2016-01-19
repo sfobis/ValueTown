@@ -7,12 +7,20 @@ import java.util.ArrayList;
  */
 public class Cart {
 
+    //Singleton
+    private static Cart instance = new Cart();
+
     private ArrayList<Product> products;
 
-    public Cart(){
+    private Cart(){
         products = new ArrayList<>();
     }
 
+    public static Cart getInstance() {
+        return instance;
+    }
+
+    //methodes
     public ArrayList<Product> getProducts() {
         return products;
     }

@@ -28,6 +28,7 @@ import java.util.Vector;
 import mobile.valuetown.adapt.adapt_list2;
 import mobile.valuetown.async.DownloadTask;
 import mobile.valuetown.bdd.Cart;
+import mobile.valuetown.bdd.Product;
 import mobile.valuetown.meta.AsyncResponse;
 import mobile.valuetown.meta.BaseActivity;
 
@@ -65,10 +66,10 @@ public class MainActivity extends BaseActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        cart = new Cart();
+
         //async
         //Requete
-        String stringQ = "select ville from store";
+        String stringQ = "select * from product";
 
         //thread asynctask pour la requete
         DownloadTask dt = new DownloadTask(this);
@@ -143,19 +144,35 @@ public class MainActivity extends BaseActivity
     }
 
     public void processFinish(String result) {
-        final ArrayList<String> stores = new ArrayList<String>();
+        final ArrayList<String> starter = new ArrayList<>();
+        final ArrayList<String> meal = new ArrayList<>();
+        final ArrayList<String> drink = new ArrayList<>();
+        final ArrayList<Product> products = new ArrayList<>();
         System.out.println(result);
         try {
-            JSONArray res = null;
-            res = new JSONArray(result);
+            JSONArray res = new JSONArray(result);
 
             for (int i = 0; i < res.length(); i++) {
                 //Pour chaque row.
                 JSONObject row = res.getJSONObject(i);
-                String s = row.getString("ville");
-                stores.add(s);
-
+                String n = row.getString("nom");
+                String c = row.getString("categorie");
+                int p = row.getInt("prix");
+                Product product = new Product(n, c, p);
+                products.add(product);
             }
+            for (Product p : products){
+                if (p.getCategorie().equals("starter")){
+                    starter.add(p.getName());
+                }
+                if (p.getCategorie().equals("meal")){
+                    meal.add(p.getName());
+                }
+                if (p.getCategorie().equals("drink")){
+                    drink.add(p.getName());
+                }
+            }
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -164,7 +181,7 @@ public class MainActivity extends BaseActivity
         ListView listview2 = new ListView(mContext);
         ListView listview3 = new ListView(mContext);
 
-        Vector<View> pages = new Vector<View>();
+        Vector<View> pages = new Vector<>();
 
         pages.add(listview1);
         pages.add(listview2);
@@ -175,17 +192,23 @@ public class MainActivity extends BaseActivity
         adapt_list2 adapter = new adapt_list2(mContext,pages);
         vp.setAdapter(adapter);
 
-        listview1.setAdapter(new ArrayAdapter<String>(mContext, android.R.layout.simple_list_item_1,stores));
-        listview2.setAdapter(new ArrayAdapter<String>(mContext, android.R.layout.simple_list_item_1,stores));
-        listview3.setAdapter(new ArrayAdapter<String>(mContext, android.R.layout.simple_list_item_1,stores));
+        listview1.setAdapter(new ArrayAdapter<>(mContext, android.R.layout.simple_list_item_1,starter));
+        listview2.setAdapter(new ArrayAdapter<>(mContext, android.R.layout.simple_list_item_1,meal));
+        listview3.setAdapter(new ArrayAdapter<>(mContext, android.R.layout.simple_list_item_1,drink));
 
         listview1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-                Toast.makeText(getApplicationContext(),
-                        "Click ListItem Number " + position, Toast.LENGTH_LONG)
-                        .show();
+                for ( Product local_p : products){
+                    if (local_p.getName().equals(parent.getItemAtPosition(position))){
+                        Cart.getInstance().addProduct(local_p);
+                        Toast.makeText(getApplicationContext(),
+                                local_p.getName()+" a été mis dans votre panier", Toast.LENGTH_LONG)
+                                .show();
+                    }
+                }
+
             }
         });
 
@@ -193,9 +216,15 @@ public class MainActivity extends BaseActivity
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-                Toast.makeText(getApplicationContext(),
-                        "Click ListItem Number " + position, Toast.LENGTH_LONG)
-                        .show();
+                for ( Product local_p : products){
+                    if (local_p.getName().equals(parent.getItemAtPosition(position))){
+                        Cart.getInstance().addProduct(local_p);
+                        Toast.makeText(getApplicationContext(),
+                                local_p.getName()+" a été mis dans votre panier", Toast.LENGTH_LONG)
+                                .show();
+                    }
+                }
+
             }
         });
 
@@ -203,9 +232,15 @@ public class MainActivity extends BaseActivity
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-                Toast.makeText(getApplicationContext(),
-                        "Click ListItem Number " + position, Toast.LENGTH_LONG)
-                        .show();
+                for ( Product local_p : products){
+                    if (local_p.getName().equals(parent.getItemAtPosition(position))){
+                        Cart.getInstance().addProduct(local_p);
+                        Toast.makeText(getApplicationContext(),
+                                local_p.getName()+" a été mis dans votre panier", Toast.LENGTH_LONG)
+                                .show();
+                    }
+                }
+
             }
         });
 

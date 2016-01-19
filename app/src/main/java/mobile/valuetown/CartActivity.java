@@ -7,6 +7,7 @@ import android.app.ListFragment;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +17,10 @@ import android.widget.ListView;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
+import mobile.valuetown.bdd.Cart;
+import mobile.valuetown.bdd.Product;
 import mobile.valuetown.meta.BaseActivity;
 
 /**
@@ -24,12 +29,22 @@ import mobile.valuetown.meta.BaseActivity;
  * landscape.
  */
 public class CartActivity extends BaseActivity {
+
+
     //BEGIN_INCLUDE(main)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_cart);
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(CartActivity.this, CommandActivity.class);
+                startActivity(i);
+            }
+        });
     }
 //END_INCLUDE(main)
     /**
@@ -66,12 +81,16 @@ public class CartActivity extends BaseActivity {
     public static class TitlesFragment extends ListFragment {
         boolean mDualPane;
         int mCurCheckPosition = 0;
+        ArrayList<String> products = new ArrayList<>();
         @Override
         public void onActivityCreated(Bundle savedInstanceState) {
             super.onActivityCreated(savedInstanceState);
             // Populate list with our static array of titles.
+            for ( Product p : Cart.getInstance().getProducts()){
+                products.add(p.getName());
+            }
             setListAdapter(new ArrayAdapter<String>(getActivity(),
-                    android.R.layout.simple_list_item_activated_1, Shakespeare.TITLES));
+                    android.R.layout.simple_list_item_activated_1, products));
             // Check to see if we have a frame in which to embed the details
             // fragment directly in the containing UI.
             View detailsFrame = getActivity().findViewById(R.id.details);
@@ -138,12 +157,15 @@ public class CartActivity extends BaseActivity {
      */
 //BEGIN_INCLUDE(details)
     public static class DetailsFragment extends Fragment {
+
+        ArrayList<String> categorie = new ArrayList<>();
         /**
          * Create a new instance of DetailsFragment, initialized to
          * show the text at 'index'.
          */
         public static DetailsFragment newInstance(int index) {
             DetailsFragment f = new DetailsFragment();
+
             // Supply index input as an argument.
             Bundle args = new Bundle();
             args.putInt("index", index);
@@ -166,13 +188,16 @@ public class CartActivity extends BaseActivity {
                 // the view hierarchy; it would just never be used.
                 return null;
             }
+            for ( Product p : Cart.getInstance().getProducts()){
+                categorie.add(p.getCategorie());
+            }
             ScrollView scroller = new ScrollView(getActivity());
             TextView text = new TextView(getActivity());
             int padding = (int)TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
                     4, getActivity().getResources().getDisplayMetrics());
             text.setPadding(padding, padding, padding, padding);
             scroller.addView(text);
-            text.setText(Shakespeare.DIALOGUE[getShownIndex()]);
+            text.setText(categorie.get(getShownIndex()));
             return scroller;
         }
     }

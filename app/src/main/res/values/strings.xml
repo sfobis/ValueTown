@@ -26,11 +26,31 @@
     <string name="dessert">Desserts</string>
     <string name="drink">Drinks</string>
     <string name="title_activity_store_detail">StoreDetailActivity</string>
-    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_main">Your store</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_activity_cart">CartActivity</string>
-    <string name="title_activity_command">CommandActivity</string>
-    <string name="title_activity_user">UserActivity</string>
+    <string name="title_activity_cart">Your Cart</string>
+    <string name="title_activity_command">Your command</string>
+    <string name="title_activity_user">Your information</string>
+
+    <!-- - - textview- - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <string name="user_title">Edit Account Information</string>
+    <string name="user_name">Name: </string>
+    <string name="user_surname">Surname: </string>
+    <string name="user_addr">Address: </string>
+    <string name="user_code">City code: </string>
+    <string name="command_title">Command recap</string>
+
+    <!-- - - button - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <string name="user_cancel">Cancel</string>
+    <string name="user_save">Save</string>
+    <string name="user_edit">Edit</string>
+    <string name="user_return">Return</string>
+
+    <!-- - - -toast  - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <string name="user_toast_name">Enter your name!</string>
+    <string name="user_toast_surname">Enter your surname!</string>
+    <string name="user_toast_addr">Enter your address</string>
+    <string name="user_toast_code">Enter your city code</string>
 </resources>

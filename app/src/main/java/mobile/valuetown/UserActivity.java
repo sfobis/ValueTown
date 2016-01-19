@@ -120,25 +120,25 @@ public class UserActivity extends BaseActivity {
                 //Show toasts for error handling.
                 if(_userName.getText().equals("")) {
                     // post toast
-                    Toast.makeText(getApplicationContext(), "Entrez un nom!",
+                    Toast.makeText(getApplicationContext(), getString(R.string.user_toast_name),
                             Toast.LENGTH_LONG).show();
                 }
 
                 else if(_surname.getText().equals("")) {
                     // post toast
-                    Toast.makeText(getApplicationContext(), "Entrez un nom de famille!",
+                    Toast.makeText(getApplicationContext(),  getString(R.string.user_toast_surname),
                             Toast.LENGTH_LONG).show();
                 }
 
                 else if(_addr.getText().equals("")) {
                     // post toast
-                    Toast.makeText(getApplicationContext(), "Entrez une adresse!",
+                    Toast.makeText(getApplicationContext(),  getString(R.string.user_toast_addr),
                             Toast.LENGTH_LONG).show();
                 }
 
                 else if(_code.getText().equals("")) {
                     // post toast
-                    Toast.makeText(getApplicationContext(), "Entrez un code postal!",
+                    Toast.makeText(getApplicationContext(),  getString(R.string.user_toast_code),
                             Toast.LENGTH_LONG).show();
                 }else{
                     _returnBtn.setVisibility(View.VISIBLE);

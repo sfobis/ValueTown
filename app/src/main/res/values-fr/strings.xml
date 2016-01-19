@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ValueTown</string>
+    <string name="app_name_b">Value Town</string>
+
+    <string name="navigation_drawer_open">Ouvrir onglet</string>
+    <string name="navigation_drawer_close">fermer onglet</string>
+
+    <string name="action_settings">Paramètres</string>
+
+    <!-- nav menu -->
+    <!-- nav menu:button -->
+    <string name="store">Magasin</string>
+    <string name="users">Utilisateur</string>
+    <string name="mystore">Changer de magasin</string>
+    <string name="setting">Informations</string>
+    <!-- nav menu:toast -->
+    <string name="toaststore">Magasins sélectionné</string>
+    <string name="toastusers">Panneau utilisateur sélectionné</string>
+    <string name="toastmystore">Changement de magasins sélectionné</string>
+    <string name="toastsetting">Panneau information sélectionné</string>
+    <!-- swipe tabs -->
+    <string name="sales">Sales</string>
+    <string name="menu">Menus</string>
+    <string name="starter">Apéritifs</string>
+    <string name="meal">Repas</string>
+    <string name="dessert">Desserts</string>
+    <string name="drink">Boissons</string>
+    <string name="title_activity_store_detail">Magasin</string>
+    <string name="title_activity_main">Votre magasin</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_cart">Votre panier</string>
+    <string name="title_activity_command">Votre commande</string>
+    <string name="title_activity_user">Vos informations</string>
+
+    <!-- - - textview- - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+    <string name=""></string>
+
+    <!-- - - button - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+    <!-- - - -toast  - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+</resources>
