@@ -16,7 +16,7 @@
         android:layout_width="45dp"
         android:layout_height="56dp"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
-        android:src="@drawable/ic_home_black_48dp" />
+        android:src="@mipmap/kappa" />
 
     <TextView
         android:layout_width="match_parent"

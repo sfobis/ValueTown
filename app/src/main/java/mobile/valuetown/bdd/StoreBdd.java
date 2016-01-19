@@ -10,7 +10,7 @@ public class StoreBdd {
     private static final int VERSION_BDD = 1;
     private static final String NOM_BDD = "app.db";
 
-    public static final String TABLE_STORE = "table_store";
+    public static final String TABLE_STORE = "store";
     public static final String COL_ID = "id";
     public static final int NUM_COL_ID = 0;
     public static final String COL_VILLE = "ville";
@@ -24,6 +24,7 @@ public class StoreBdd {
 
     public StoreBdd(Context context){
         //On créer la BDD et sa table
+        System.out.println("openBDD");
         maBase = new Bdd(context, NOM_BDD, null, VERSION_BDD);
     }
 
