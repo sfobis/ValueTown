@@ -1,4 +1,5 @@
 # Application mobile - Value Town #
+## UE HMIN 303 - 2015
 Création d'une application mobile de livraison de repas
 
 ## Membres du groupe 
@@ -13,7 +14,6 @@ $ git clone git@github.com:sfobis/ValueTown.git
 ```
 
 ## Instructions de démarrage
-### Installation des librairies
 ``` sh
 Ouverture du projet automatique avec Android Studio
 ```
