@@ -29,4 +29,6 @@ public class Cart {
         products.add(p);
     }
 
+    public void resetCart() { products.clear();}
+
 }

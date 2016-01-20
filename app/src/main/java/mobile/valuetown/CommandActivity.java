@@ -1,6 +1,7 @@
 package mobile.valuetown;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -37,6 +38,7 @@ public class CommandActivity extends AppCompatActivity implements AsyncResponse{
     private EditText _tel;
     private TextView _mag;
     private TextView _codeMag;
+    private TextView _price;
     private AlertDialog dialog_conf;
     String liste;
 
@@ -59,7 +61,7 @@ public class CommandActivity extends AppCompatActivity implements AsyncResponse{
                 //Requete
                 liste = setupListe();
 
-                String stringQ = "INSERT INTO `commande`(`magasin`,`nom`, `prenom`, `adresse`, `code`, `tel`, `heure`, `liste`) VALUES ("+CurrentStore.getInstance().getCode()+",'"+User.getInstance().getName()+"','"+User.getInstance().getSurname()+"','"+User.getInstance().getAddr()+"',"+User.getInstance().getCode()+",0685288703,'10:25','"+liste+"')";
+                String stringQ = "INSERT INTO `commande`(`magasin`,`nom`, `prenom`, `adresse`, `code`, `tel`, `heure`, `liste`) VALUES ("+CurrentStore.getInstance().getCode()+",'"+User.getInstance().getName()+"','"+User.getInstance().getSurname()+"','"+User.getInstance().getAddr()+"',"+User.getInstance().getCode()+","+User.getInstance().getTel()+",'10:25','"+liste+"')";
                 System.out.println(stringQ);
                 //thread asynctask pour la requete
                 DownloadTask dt = new DownloadTask(CommandActivity.this);
@@ -112,6 +114,10 @@ public class CommandActivity extends AppCompatActivity implements AsyncResponse{
                     // post toast
                     Toast.makeText(getApplicationContext(),  getString(R.string.user_toast_tel),
                             Toast.LENGTH_LONG).show();
+                }else if(Cart.getInstance().getProducts().size()<1) {
+                    // post toast
+                    Toast.makeText(getApplicationContext(),  getString(R.string.user_toast_vide),
+                            Toast.LENGTH_LONG).show();
                 }else {
                     dialog.show();
                 }
@@ -138,6 +144,7 @@ public class CommandActivity extends AppCompatActivity implements AsyncResponse{
 
         builder_conf.setPositiveButton(R.string.popup_validation, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
+                Cart.getInstance().resetCart();
                 dialog.dismiss();
             }
         });
@@ -160,6 +167,7 @@ public class CommandActivity extends AppCompatActivity implements AsyncResponse{
         _tel = (EditText) findViewById(R.id.ettel);
         _mag = (TextView) findViewById(R.id.tvstore2);
         _codeMag= (TextView) findViewById(R.id.tvstorecode2);
+        _price= (TextView) findViewById(R.id.tvcart2);
 
         _code.setRawInputType(InputType.TYPE_CLASS_NUMBER);
         _tel.setRawInputType(InputType.TYPE_CLASS_NUMBER);
@@ -180,12 +188,20 @@ public class CommandActivity extends AppCompatActivity implements AsyncResponse{
         int i = CurrentStore.getInstance().getCode();
         if (i == 0) {_codeMag.setText("");}else{_codeMag.setText(""+u);}
         _codeMag.setText(""+i);
+        int total = 0;
+        for (Product p : Cart.getInstance().getProducts()){
+            total = total + p.getPrice();
+        }
+        String price = ""+total+" "+getString(R.string.devise);
+
+        _price.setText(price);
 
         _returnBtn.setOnClickListener(new View.OnClickListener(){
             //end activity
             @Override
             public void onClick(View v) {
-                CommandActivity.this.finish();
+                Intent i = new Intent(CommandActivity.this, MainActivity.class);
+                startActivity(i);
             }
         });
 

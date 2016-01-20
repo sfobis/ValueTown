@@ -9,13 +9,16 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
+import android.widget.GridView;
+import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -23,6 +26,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Vector;
 
 import mobile.valuetown.adapt.adapt_list2;
@@ -30,14 +34,14 @@ import mobile.valuetown.async.DownloadTask;
 import mobile.valuetown.bdd.Cart;
 import mobile.valuetown.bdd.Product;
 import mobile.valuetown.meta.AsyncResponse;
-import mobile.valuetown.meta.BaseActivity;
 
-public class MainActivity extends BaseActivity
+public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,AsyncResponse {
 
     public ViewPager vp;
     public Context mContext;
     Toolbar toolbar;
+    private ImageButton _ajout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -144,9 +148,9 @@ public class MainActivity extends BaseActivity
     }
 
     public void processFinish(String result) {
-        final ArrayList<String> starter = new ArrayList<>();
-        final ArrayList<String> meal = new ArrayList<>();
-        final ArrayList<String> drink = new ArrayList<>();
+        final ArrayList<HashMap<String,String>> starter = new ArrayList<>();
+        final ArrayList<HashMap<String,String>> meal = new ArrayList<>();
+        final ArrayList<HashMap<String,String>> drink = new ArrayList<>();
         final ArrayList<Product> products = new ArrayList<>();
         System.out.println(result);
         try {
@@ -158,18 +162,28 @@ public class MainActivity extends BaseActivity
                 String n = row.getString("nom");
                 String c = row.getString("categorie");
                 int p = row.getInt("prix");
-                Product product = new Product(n, c, p);
+                String ing = row.getString("ing");
+                Product product = new Product(n, c, p,ing);
                 products.add(product);
             }
             for (Product p : products){
                 if (p.getCategorie().equals("starter")){
-                    starter.add(p.getName());
+                    HashMap<String,String> h = new HashMap<>();
+                    h.put("label",p.getName());
+                    h.put("price"," - Prix: "+p.getPrice()+" " + getString(R.string.devise));
+                    starter.add(h);
                 }
                 if (p.getCategorie().equals("meal")){
-                    meal.add(p.getName());
+                    HashMap<String,String> h = new HashMap<>();
+                    h.put("label",p.getName());
+                    h.put("price"," - Prix: "+p.getPrice()+" " + getString(R.string.devise));
+                    meal.add(h);
                 }
                 if (p.getCategorie().equals("drink")){
-                    drink.add(p.getName());
+                    HashMap<String,String> h = new HashMap<>();
+                    h.put("label",p.getName());
+                    h.put("price"," - "+getString(R.string.price)+": "+p.getPrice()+" " + getString(R.string.devise));
+                    drink.add(h);
                 }
             }
 
@@ -177,7 +191,8 @@ public class MainActivity extends BaseActivity
             e.printStackTrace();
         }
         mContext = this;
-        ListView listview1 = new ListView(mContext);
+        GridView gv = new GridView(mContext);
+        final ListView listview1 = new ListView(mContext);
         ListView listview2 = new ListView(mContext);
         ListView listview3 = new ListView(mContext);
 
@@ -192,16 +207,19 @@ public class MainActivity extends BaseActivity
         adapt_list2 adapter = new adapt_list2(mContext,pages);
         vp.setAdapter(adapter);
 
-        listview1.setAdapter(new ArrayAdapter<>(mContext, android.R.layout.simple_list_item_1,starter));
-        listview2.setAdapter(new ArrayAdapter<>(mContext, android.R.layout.simple_list_item_1,meal));
-        listview3.setAdapter(new ArrayAdapter<>(mContext, android.R.layout.simple_list_item_1,drink));
+        //gv.setAdapter(new ArrayAdapter<>(mContext,android.R.layout.two_line_list_item));
+        listview1.setAdapter(new SimpleAdapter(mContext,starter,R.layout.row,new String[] {"label","price"},new int[] {R.id.label,R.id.price}));
+
+        listview2.setAdapter(new SimpleAdapter(mContext,meal,R.layout.row,new String[] {"label","price"},new int[] {R.id.label,R.id.price}));
+        listview3.setAdapter(new SimpleAdapter(mContext,drink,R.layout.row,new String[] {"label","price"},new int[] {R.id.label,R.id.price}));
 
         listview1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
                 for ( Product local_p : products){
-                    if (local_p.getName().equals(parent.getItemAtPosition(position))){
+                    HashMap<String, Object> obj = (HashMap<String, Object>) parent.getItemAtPosition(position);
+                    if (local_p.getName().equals(obj.get("label"))){
                         Cart.getInstance().addProduct(local_p);
                         Toast.makeText(getApplicationContext(),
                                 local_p.getName()+" "+getString(R.string.user_toast_cart), Toast.LENGTH_LONG)
@@ -217,7 +235,8 @@ public class MainActivity extends BaseActivity
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
                 for ( Product local_p : products){
-                    if (local_p.getName().equals(parent.getItemAtPosition(position))){
+                    HashMap<String, Object> obj = (HashMap<String, Object>) parent.getItemAtPosition(position);
+                    if (local_p.getName().equals(obj.get("label"))){
                         Cart.getInstance().addProduct(local_p);
                         Toast.makeText(getApplicationContext(),
                                 local_p.getName()+" "+getString(R.string.user_toast_cart), Toast.LENGTH_LONG)
@@ -233,7 +252,8 @@ public class MainActivity extends BaseActivity
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
                 for ( Product local_p : products){
-                    if (local_p.getName().equals(parent.getItemAtPosition(position))){
+                    HashMap<String, Object> obj = (HashMap<String, Object>) parent.getItemAtPosition(position);
+                    if (local_p.getName().equals(obj.get("label"))){
                         Cart.getInstance().addProduct(local_p);
                         Toast.makeText(getApplicationContext(),
                                 local_p.getName()+" "+getString(R.string.user_toast_cart), Toast.LENGTH_LONG)
@@ -246,6 +266,8 @@ public class MainActivity extends BaseActivity
 
 
     }
+
+
 
 
 }

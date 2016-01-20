@@ -22,7 +22,8 @@
 
         <fragment class="mobile.valuetown.CartActivity$TitlesFragment"
             android:id="@+id/titles" android:layout_weight="1"
-            android:layout_width="0px" android:layout_height="match_parent" />
+            android:layout_width="0px" android:layout_height="match_parent"
+            android:layout_marginTop="50dp"/>
 
         <FrameLayout android:id="@+id/details" android:layout_weight="1"
             android:layout_width="0px" android:layout_height="match_parent"

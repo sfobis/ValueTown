@@ -3,6 +3,7 @@ package mobile.valuetown;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
@@ -14,9 +15,8 @@ import java.util.ArrayList;
 
 import mobile.valuetown.bdd.CurrentStore;
 import mobile.valuetown.bdd.User;
-import mobile.valuetown.meta.BaseActivity;
 
-public class UserActivity extends BaseActivity {
+public class UserActivity extends AppCompatActivity {
 
     private ArrayList<EditText> _infoTextList = new ArrayList<>();
     private Button _returnBtn;

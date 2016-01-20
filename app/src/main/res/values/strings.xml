@@ -52,7 +52,14 @@
     <string name="info_dev2">Fobis Samuel</string>
     <string name="info_contact2">samfobis@gmail.com</string>
     <string name="info_licence">All right reserved</string>
-
+    <string name="devise">Dollar(s)</string>
+    <string name="price">Price</string>
+    <string name="title_activity_info">InfoActivity</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="total_panier">Cart price</string>
+    <string name="ing">Ingredients: </string>
+    <string name="le_total">Your cart price is:  </string>
+    <string name="reset_cart">Reset your cart</string>
 
     <!-- - - button - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
     <string name="user_cancel">Cancel</string>
@@ -68,9 +75,9 @@
     <string name="user_toast_code">Enter your city code!</string>
     <string name="user_toast_tel">Enter your phone number!</string>
     <string name="user_toast_cart"> was put in your cart!</string>
-    <string name="title_activity_info">InfoActivity</string>
-    <string name="title_activity_maps">Map</string>
-
+    <string name="user_toast_reset">Your cart is now empty!</string>
+    <string name="user_toast_vide">Your cart is empty</string>
+    <string name="toast_mag">Selected store: </string>
     <!-- - - -alert  - - - - - - - - - - - - - - - - - - - - - - - - - - -->
     <string name="popup_title_conf">Confirmation</string>
     <string name="popup_title_conf2">Order Send!</string>

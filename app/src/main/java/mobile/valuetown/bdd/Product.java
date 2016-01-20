@@ -8,10 +8,12 @@ public class Product {
     String name;
     String categorie;
     int price;
+    String ing;
 
-    public Product(String n,String c,int p){
+    public Product(String n,String c,int p, String i){
         name = n;
         categorie = c;
+        ing = i;
         price = p;
     }
 
@@ -37,5 +39,13 @@ public class Product {
 
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    public String getIng() {
+        return ing;
+    }
+
+    public void setIng(String ing) {
+        this.ing = ing;
     }
 }

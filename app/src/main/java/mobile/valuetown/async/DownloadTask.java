@@ -41,7 +41,7 @@ public class DownloadTask extends  AsyncTask<String, String, String>{
         try {
             InputStream is = null;
             OutputStream os = null;
-            int len = 20000;
+            int len = 50000;
 
             try {
                 URL url = new URL(stringUrl);

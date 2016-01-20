@@ -21,10 +21,31 @@
 
     </android.support.design.widget.AppBarLayout>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/user_title"
+        android:id="@+id/carttitle"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="55dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/reset_cart"
+        android:id="@+id/reset"
+        android:layout_marginTop="110dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="50dp" />
+
     <fragment class="mobile.valuetown.CartActivity$TitlesFragment"
         android:id="@+id/titles"
         android:layout_width="match_parent" android:layout_height="match_parent"
-        android:layout_marginTop="57dp"/>
+        android:layout_marginTop="160dp"/>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"

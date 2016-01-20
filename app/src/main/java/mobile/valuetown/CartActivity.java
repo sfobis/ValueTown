@@ -4,32 +4,38 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.app.ListFragment;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AppCompatActivity;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 import mobile.valuetown.bdd.Cart;
 import mobile.valuetown.bdd.Product;
-import mobile.valuetown.meta.BaseActivity;
 
 /**
  * Demonstration of using fragments to implement different activity layouts.
  * This sample provides a different layout (and activity flow) when run in
  * landscape.
  */
-public class CartActivity extends BaseActivity {
+public class CartActivity extends AppCompatActivity {
 
+    static TextView _cart;
+    static Button _reset;
+    static public Context c;
 
     //BEGIN_INCLUDE(main)
     @Override
@@ -37,6 +43,7 @@ public class CartActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_cart);
+        c = CartActivity.this;
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,6 +52,10 @@ public class CartActivity extends BaseActivity {
                 startActivity(i);
             }
         });
+
+
+
+
     }
 //END_INCLUDE(main)
     /**
@@ -81,10 +92,13 @@ public class CartActivity extends BaseActivity {
     public static class TitlesFragment extends ListFragment {
         boolean mDualPane;
         int mCurCheckPosition = 0;
+
         ArrayList<String> products = new ArrayList<>();
         @Override
         public void onActivityCreated(Bundle savedInstanceState) {
             super.onActivityCreated(savedInstanceState);
+
+
             // Populate list with our static array of titles.
             for ( Product p : Cart.getInstance().getProducts()){
                 products.add(p.getName());
@@ -98,6 +112,29 @@ public class CartActivity extends BaseActivity {
             if (savedInstanceState != null) {
                 // Restore last state for checked position.
                 mCurCheckPosition = savedInstanceState.getInt("curChoice", 0);
+            }
+            if (!mDualPane){
+                int total = 0;
+                for (Product p : Cart.getInstance().getProducts()){
+                    total = total + p.getPrice();
+                }
+                String price = getString(R.string.le_total)+" "+total+" "+ getString(R.string.devise);
+                _cart = (TextView) getActivity().findViewById(R.id.carttitle);
+                _cart.setText(price);
+
+                _reset = (Button) getActivity().findViewById(R.id.reset);
+
+                _reset.setOnClickListener(new View.OnClickListener() {
+                    //Sets the screen to be able to edit the account information
+                    @Override
+                    public void onClick(View v) {
+                        Cart.getInstance().resetCart();
+                        Intent i = new Intent(c, MainActivity.class);
+                        startActivity(i);
+                        Toast.makeText(c,  getString(R.string.user_toast_reset),
+                                Toast.LENGTH_LONG).show();
+                    }
+                });
             }
             if (mDualPane) {
                 // In dual-pane mode, the list view highlights the selected item.
@@ -158,7 +195,7 @@ public class CartActivity extends BaseActivity {
 //BEGIN_INCLUDE(details)
     public static class DetailsFragment extends Fragment {
 
-        ArrayList<String> categorie = new ArrayList<>();
+        ArrayList<String> ing = new ArrayList<>();
         /**
          * Create a new instance of DetailsFragment, initialized to
          * show the text at 'index'.
@@ -189,15 +226,21 @@ public class CartActivity extends BaseActivity {
                 return null;
             }
             for ( Product p : Cart.getInstance().getProducts()){
-                categorie.add(p.getCategorie());
+                ing.add(p.getIng());
             }
+
+            int total = 0;
+            for (Product p : Cart.getInstance().getProducts()){
+                total = total + p.getPrice();
+            }
+            String price = "Le total de votre panier est "+total+" "+ getString(R.string.devise);
             ScrollView scroller = new ScrollView(getActivity());
             TextView text = new TextView(getActivity());
             int padding = (int)TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
                     4, getActivity().getResources().getDisplayMetrics());
             text.setPadding(padding, padding, padding, padding);
             scroller.addView(text);
-            text.setText(categorie.get(getShownIndex()));
+            text.setText(price +"\n"+getString(R.string.ing)+ ing.get(getShownIndex()));
             return scroller;
         }
     }

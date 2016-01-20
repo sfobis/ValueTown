@@ -222,4 +222,22 @@
         android:layout_alignTop="@+id/tvstorecode"
         android:layout_alignEnd="@+id/ettel" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:text="@string/total_panier"
+        android:id="@+id/tvcart"
+        android:layout_below="@+id/tvstorecode"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="5dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:text="New Text"
+        android:id="@+id/tvcart2"
+        android:layout_below="@+id/tvstorecode2"
+        android:layout_alignTop="@+id/tvcart"
+        android:layout_alignEnd="@+id/ettel" />
+
 </RelativeLayout>

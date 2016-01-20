@@ -53,7 +53,12 @@
     <string name="info_dev2">Fobis Samuel</string>
     <string name="info_contact2">samfobis@gmail.com</string>
     <string name="info_licence">All right reserved</string>
-
+    <string name="devise">Euro(s)</string>
+    <string name="price">Prix</string>
+    <string name="total_panier">Prix du panier</string>
+    <string name="ing">Ingrédients: </string>
+    <string name="le_total">Le total de votre panier est de: </string>
+    <string name="reset_cart">Vider votre panier</string>
 
     <!-- - - button - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
     <string name="user_cancel">Annuler</string>
@@ -69,7 +74,9 @@
     <string name="user_toast_code">Entrez votre code postal!</string>
     <string name="user_toast_tel">Entrez votre numéro de téléphone!</string>
     <string name="user_toast_cart"> a été placé dans votre panier!</string>
-
+    <string name="user_toast_vide">Votre panier est vide!</string>
+    <string name="user_toast_reset">Votre panier a été vidé!</string>
+    <string name="toast_mag">Magasins sélectionné: </string>
     <!-- - - -alert  - - - - - - - - - - - - - - - - - - - - - - - - - - -->
     <string name="popup_title_conf">Confirmation</string>
     <string name="popup_title_conf2">Commande envoyé!</string>
