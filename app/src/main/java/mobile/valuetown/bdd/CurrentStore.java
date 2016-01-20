@@ -3,7 +3,10 @@ package mobile.valuetown.bdd;
 /**
  * Created by stacyqt on 04/01/2016.
  */
-public class Store {
+public class CurrentStore {
+
+    //singleton
+    private static CurrentStore instance = new CurrentStore();
 
     private int id;
     private String ville;
@@ -13,18 +16,18 @@ public class Store {
     private double lat;
     private double lon;
 
-    public void setTel(String tel) {
-        this.tel = tel;
+    private CurrentStore(){
+        this.id = 0;
+        this.ville = "";
+        this.code = 0;
+        this.addr = "";
+        this.tel = "";
+        this.lat = 0.0;
+        this.lon = 0.0;
     }
 
-    public Store(int c, String v, String a, String t, Double la, Double lo){
-        this.ville = v;
-        this.code = c;
-        this.addr = a;
-        this.tel = t;
-
-        this.lat = la;
-        this.lon = lo;
+    public static CurrentStore getInstance() {
+        return instance;
     }
 
     public int getId() {
@@ -51,14 +54,6 @@ public class Store {
         this.code = code;
     }
 
-    public String getAddr() {
-        return addr;
-    }
-
-    public void setAddr(String addr) {
-        this.addr = addr;
-    }
-
     public double getLat() {
         return lat;
     }
@@ -75,9 +70,19 @@ public class Store {
         this.lon = lon;
     }
 
-    public Store(){}
+    public String getAddr() {
+        return addr;
+    }
+
+    public void setAddr(String addr) {
+        this.addr = addr;
+    }
 
     public String getTel() {
         return tel;
+    }
+
+    public void setTel(String tel) {
+        this.tel = tel;
     }
 }

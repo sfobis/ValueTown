@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 
 import java.util.Vector;
 
+import mobile.valuetown.R;
+
 /**
  * Created by stacyqt on 11/01/2016.
  */
@@ -44,13 +46,13 @@ public class adapt_list2 extends PagerAdapter {
     @Override
     public CharSequence getPageTitle(int position) {
         if (position == 0){
-            return "Starters";
+            return mContext.getString(R.string.starter);
         }
         if (position == 1){
-            return "Meals";
+            return mContext.getString(R.string.meal);
         }
         if (position == 2){
-            return "Drinks";
+            return mContext.getString(R.string.drink);
         }
         return "Title Here";
     }

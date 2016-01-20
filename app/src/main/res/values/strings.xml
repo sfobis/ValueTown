@@ -39,18 +39,44 @@
     <string name="user_name">Name: </string>
     <string name="user_surname">Surname: </string>
     <string name="user_addr">Address: </string>
+    <string name="user_tel">Phone: </string>
     <string name="user_code">City code: </string>
     <string name="command_title">Command recap</string>
+    <string name="user_magasin">Current store: </string>
+    <string name="user_magasin_code">Store city code: </string>
+    <string name="info_title">About </string>
+    <string name="info_version">Version: </string>
+    <string name="info_dev">Developper: </string>
+    <string name="info_contact">Contact: </string>
+    <string name="info_version2">1.0.3</string>
+    <string name="info_dev2">Fobis Samuel</string>
+    <string name="info_contact2">samfobis@gmail.com</string>
+    <string name="info_licence">All right reserved</string>
+
 
     <!-- - - button - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
     <string name="user_cancel">Cancel</string>
     <string name="user_save">Save</string>
     <string name="user_edit">Edit</string>
     <string name="user_return">Return</string>
+    <string name="user_map">Google map</string>
 
     <!-- - - -toast  - - - - - - - - - - - - - - - - - - - - - - - - - - -->
     <string name="user_toast_name">Enter your name!</string>
     <string name="user_toast_surname">Enter your surname!</string>
-    <string name="user_toast_addr">Enter your address</string>
-    <string name="user_toast_code">Enter your city code</string>
+    <string name="user_toast_addr">Enter your address!</string>
+    <string name="user_toast_code">Enter your city code!</string>
+    <string name="user_toast_tel">Enter your phone number!</string>
+    <string name="user_toast_cart"> was put in your cart!</string>
+    <string name="title_activity_info">InfoActivity</string>
+    <string name="title_activity_maps">Map</string>
+
+    <!-- - - -alert  - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <string name="popup_title_conf">Confirmation</string>
+    <string name="popup_title_conf2">Order Send!</string>
+    <string name="popup_content_conf">Your order will be send. \nWould you confirm your order ?\nCity store: </string>
+    <string name="popup_validation">Confirm</string>
+    <string name="popup_cancel">Cancel</string>
+    <string name="popup_ok">Ok!</string>
+
 </resources>

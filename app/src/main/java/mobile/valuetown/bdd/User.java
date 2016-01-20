@@ -11,13 +11,16 @@ public class User {
     private  String name;
     private  String surname;
     private  String addr;
-    private  String code;
+    private  int code;
+    private String tel;
 
     private User(){
         name = "";
         surname = "";
         addr = "";
-        code = "";
+        code = 0;
+        tel = "";
+
 
     }
 
@@ -50,11 +53,19 @@ public class User {
         this.addr = addr;
     }
 
-    public String getCode() {
+    public int getCode() {
         return code;
     }
 
-    public void setCode(String code) {
+    public void setCode(int code) {
         this.code = code;
+    }
+
+    public String getTel() {
+        return tel;
+    }
+
+    public void setTel(String tel) {
+        this.tel = tel;
     }
 }

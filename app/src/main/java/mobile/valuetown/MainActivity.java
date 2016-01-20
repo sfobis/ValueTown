@@ -129,11 +129,11 @@ public class MainActivity extends BaseActivity
             startActivity(i);
             Toast.makeText(getApplicationContext(), getString(R.string.toastusers), Toast.LENGTH_SHORT).show();
         } else if (id == R.id.nav_mystore) {
-            Intent i = new Intent(MainActivity.this, UserActivity.class);
+            Intent i = new Intent(MainActivity.this, StartActivity.class);
             startActivity(i);
             Toast.makeText(getApplicationContext(), getString(R.string.toastmystore), Toast.LENGTH_SHORT).show();
         } else if (id == R.id.nav_setting) {
-            Intent i = new Intent(MainActivity.this, UserActivity.class);
+            Intent i = new Intent(MainActivity.this, InfoActivity.class);
             startActivity(i);
             Toast.makeText(getApplicationContext(), getString(R.string.toastsetting), Toast.LENGTH_SHORT).show();
         }
@@ -204,7 +204,7 @@ public class MainActivity extends BaseActivity
                     if (local_p.getName().equals(parent.getItemAtPosition(position))){
                         Cart.getInstance().addProduct(local_p);
                         Toast.makeText(getApplicationContext(),
-                                local_p.getName()+" a été mis dans votre panier", Toast.LENGTH_LONG)
+                                local_p.getName()+" "+getString(R.string.user_toast_cart), Toast.LENGTH_LONG)
                                 .show();
                     }
                 }
@@ -220,7 +220,7 @@ public class MainActivity extends BaseActivity
                     if (local_p.getName().equals(parent.getItemAtPosition(position))){
                         Cart.getInstance().addProduct(local_p);
                         Toast.makeText(getApplicationContext(),
-                                local_p.getName()+" a été mis dans votre panier", Toast.LENGTH_LONG)
+                                local_p.getName()+" "+getString(R.string.user_toast_cart), Toast.LENGTH_LONG)
                                 .show();
                     }
                 }
@@ -236,7 +236,7 @@ public class MainActivity extends BaseActivity
                     if (local_p.getName().equals(parent.getItemAtPosition(position))){
                         Cart.getInstance().addProduct(local_p);
                         Toast.makeText(getApplicationContext(),
-                                local_p.getName()+" a été mis dans votre panier", Toast.LENGTH_LONG)
+                                local_p.getName()+" "+getString(R.string.user_toast_cart), Toast.LENGTH_LONG)
                                 .show();
                     }
                 }

@@ -19,34 +19,34 @@
         android:text="@string/user_title"
         android:id="@+id/title"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="26dp"
+        android:layout_marginTop="1dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true" />
 
     <TextView
         android:layout_width="wrap_content"
-        android:layout_height="50dp"
+        android:layout_height="30dp"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/user_name"
         android:id="@+id/tvname"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="10dp"
         android:layout_below="@+id/title"
         android:layout_alignParentStart="true" />
 
     <TextView
         android:layout_width="wrap_content"
-        android:layout_height="50dp"
+        android:layout_height="30dp"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/user_surname"
         android:id="@+id/tvsurname"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="10dp"
         android:layout_below="@+id/tvname"
         android:layout_alignLeft="@+id/title"
         android:layout_alignStart="@+id/title" />
 
     <TextView
         android:layout_width="wrap_content"
-        android:layout_height="50dp"
+        android:layout_height="30dp"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/user_addr"
         android:id="@+id/tvadress"
@@ -54,23 +54,35 @@
         android:layout_alignRight="@+id/tvsurname"
         android:layout_alignLeft="@+id/title"
         android:layout_alignStart="@+id/title"
-        android:layout_marginTop="28dp" />
+        android:layout_marginTop="10dp" />
 
     <TextView
         android:layout_width="wrap_content"
-        android:layout_height="50dp"
+        android:layout_height="30dp"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/user_code"
         android:id="@+id/tvcode"
         android:layout_alignRight="@+id/tvsurname"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="10dp"
         android:layout_below="@+id/tvadress"
+        android:layout_alignLeft="@+id/title"
+        android:layout_alignStart="@+id/title" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/user_tel"
+        android:id="@+id/tvtel"
+        android:layout_alignRight="@+id/tvsurname"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/tvcode"
         android:layout_alignLeft="@+id/title"
         android:layout_alignStart="@+id/title" />
 
     <EditText
         android:layout_width="wrap_content"
-        android:layout_height="50dp"
+        android:layout_height="30dp"
         android:id="@+id/etname"
         android:enabled="false"
         android:background="@android:color/transparent"
@@ -84,12 +96,12 @@
 
     <EditText
         android:layout_width="wrap_content"
-        android:layout_height="50dp"
+        android:layout_height="30dp"
         android:id="@+id/etsurname"
         android:enabled="false"
         android:background="@android:color/transparent"
         android:textColor="#af171514"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="10dp"
         android:layout_below="@+id/etname"
         android:layout_toRightOf="@+id/tvsurname"
         android:layout_alignLeft="@+id/etname"
@@ -99,13 +111,14 @@
 
     <EditText
         android:layout_width="wrap_content"
-        android:layout_height="50dp"
+        android:layout_height="30dp"
         android:id="@+id/etaddr"
         android:enabled="false"
+        android:background="@android:color/transparent"
         android:layout_below="@+id/etsurname"
         android:layout_toRightOf="@+id/tvadress"
         android:textColor="#af171514"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="10dp"
         android:layout_alignLeft="@+id/etsurname"
         android:layout_alignStart="@+id/etsurname"
         android:layout_alignRight="@+id/title"
@@ -113,50 +126,129 @@
 
     <EditText
         android:layout_width="wrap_content"
-        android:layout_height="50dp"
+        android:layout_height="30dp"
         android:id="@+id/etcode"
         android:enabled="false"
+        android:background="@android:color/transparent"
         android:layout_below="@+id/etaddr"
         android:textColor="#af171514"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="10dp"
         android:layout_alignLeft="@+id/etaddr"
         android:layout_alignStart="@+id/etaddr"
         android:layout_alignRight="@+id/title"
-        android:layout_alignEnd="@+id/title" />
+        android:layout_alignEnd="@+id/title"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:id="@+id/ettel"
+        android:enabled="false"
+        android:background="@android:color/transparent"
+        android:layout_below="@+id/etcode"
+        android:textColor="#af171514"
+        android:layout_marginTop="10dp"
+        android:layout_alignLeft="@+id/etaddr"
+        android:layout_alignStart="@+id/etaddr"
+        android:layout_alignRight="@+id/title"
+        android:layout_alignEnd="@+id/title"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Edit"
+        android:text="@string/user_edit"
         android:id="@+id/accountEdit"
-        android:layout_marginTop="25dp"
-        android:layout_below="@+id/etcode"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/ettel"
         android:layout_toEndOf="@+id/accountReturn" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Return"
+        android:text="@string/user_return"
         android:id="@+id/accountReturn"
         android:layout_alignTop="@+id/accountEdit"
-        android:layout_toEndOf="@+id/tvsurname" />
+        android:layout_toEndOf="@+id/tvadress" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Cancel"
+        android:text="@string/user_cancel"
         android:id="@+id/cancel"
         android:visibility="gone"
         android:layout_alignTop="@+id/save"
-        android:layout_toEndOf="@+id/tvsurname"/>
+        android:layout_toEndOf="@+id/tvadress"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Save"
+        android:text="@string/user_save"
         android:id="@+id/save"
         android:visibility="gone"
-        android:layout_marginTop="25dp"
-        android:layout_below="@+id/etcode"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/ettel"
         android:layout_toEndOf="@+id/cancel" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:text="@string/user_magasin"
+        android:id="@+id/tvstore"
+        android:layout_below="@+id/ettel"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="65dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:text="New Text"
+        android:id="@+id/tvstore2"
+        android:layout_alignTop="@+id/tvstore"
+        android:layout_alignEnd="@+id/ettel" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:text="@string/user_magasin_code"
+        android:id="@+id/tvstorecode"
+        android:layout_below="@+id/tvstore"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="5dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:text="@string/user_tel"
+        android:id="@+id/tvstoretel"
+        android:layout_below="@+id/tvstorecode"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="5dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:text="New Text"
+        android:id="@+id/tvstorecode2"
+        android:layout_below="@+id/tvstore2"
+        android:layout_alignTop="@+id/tvstorecode"
+        android:layout_alignEnd="@+id/etcode" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:text="New Text"
+        android:id="@+id/tvstoretel2"
+        android:layout_below="@+id/tvstorecode2"
+        android:layout_alignTop="@+id/tvstoretel"
+        android:layout_alignEnd="@+id/etcode" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/user_map"
+        android:id="@+id/map"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="50dp" />
+
+
 </RelativeLayout>

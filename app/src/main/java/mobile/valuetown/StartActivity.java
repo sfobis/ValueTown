@@ -22,6 +22,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 import mobile.valuetown.async.DownloadTask;
+import mobile.valuetown.bdd.CurrentStore;
 import mobile.valuetown.bdd.Store;
 import mobile.valuetown.bdd.StoreBdd;
 import mobile.valuetown.meta.AsyncResponse;
@@ -93,7 +94,7 @@ public class StartActivity extends BaseActivity
             startActivity(i);
             Toast.makeText(getApplicationContext(), getString(R.string.toastusers), Toast.LENGTH_SHORT).show();
         } else if (id == R.id.nav_setting) {
-            Intent i = new Intent(StartActivity.this, MainActivity.class);
+            Intent i = new Intent(StartActivity.this, InfoActivity.class);
             startActivity(i);
             Toast.makeText(getApplicationContext(), getString(R.string.toastsetting), Toast.LENGTH_SHORT).show();
         }
@@ -107,13 +108,13 @@ public class StartActivity extends BaseActivity
 
     public static class TitlesFragment extends ListFragment implements AsyncResponse {
         int mCurCheckPosition = 0;
-
+        final ArrayList<Store> realStore = new ArrayList<>();
         @Override
         public void onActivityCreated(Bundle savedInstanceState) {
             super.onActivityCreated(savedInstanceState);
 
             //Requete
-            String stringQ = "select ville from store";
+            String stringQ = "select * from store";
 
             //thread asynctask pour la requete
             DownloadTask dt = new DownloadTask(this);
@@ -125,40 +126,50 @@ public class StartActivity extends BaseActivity
 
         @Override
         public void onListItemClick(ListView l, View v, int position, long id) {
-            String s = (String) l.getItemAtPosition(position);
-            chooseStore(position,s);
-        }
+            Store s = realStore.get(position);
+            CurrentStore.getInstance().setCode(s.getCode());
+            CurrentStore.getInstance().setVille(s.getVille());
+            CurrentStore.getInstance().setAddr(s.getAddr());
+            CurrentStore.getInstance().setTel(s.getTel());
+            CurrentStore.getInstance().setLat(s.getLat());
+            CurrentStore.getInstance().setLon(s.getLon());
 
-        void chooseStore(int index,String item) {
-            mCurCheckPosition = index;
+            mCurCheckPosition = position;
             Intent intent = new Intent();
             intent.setClass(getActivity(), MainActivity.class);
-            intent.putExtra("index", index);
-            Store s = new Store(item,"34");
-            sBDD.insertStore(s);
             startActivity(intent);
         }
 
 
         public void processFinish(String result) {
-            final ArrayList<String> stores = new ArrayList<String>();
+            final ArrayList<String> stores = new ArrayList<>();
+
+
             System.out.println(result);
+
             try {
-                JSONArray res = null;
-                res = new JSONArray(result);
+                JSONArray res = new JSONArray(result);
 
                 for (int i = 0; i < res.length(); i++) {
                     //Pour chaque row.
                     JSONObject row = res.getJSONObject(i);
-                    String s = row.getString("ville");
-                    stores.add(s);
-
+                    int c = row.getInt("code");
+                    String v = row.getString("ville");
+                    String a = row.getString("adresse");
+                    String t = row.getString("tel");
+                    double la = row.getDouble("latitude");
+                    double lo = row.getDouble("longitude");
+                    Store s = new Store(c,v,a,t,la,lo);
+                    realStore.add(s);
                 }
+
+            for (Store p : realStore){
+                stores.add(p.getVille());
+            }
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-            setListAdapter(new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1, stores));
-
+            setListAdapter(new ArrayAdapter<>(getActivity(),android.R.layout.simple_list_item_1, stores));
         }
     }
 }

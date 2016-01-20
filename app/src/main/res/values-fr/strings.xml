@@ -36,11 +36,45 @@
     <string name="title_activity_user">Vos informations</string>
 
     <!-- - - textview- - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <string name="user_title">Informations utilisateur</string>
+    <string name="user_name">Prénom: </string>
+    <string name="user_surname">Nom: </string>
+    <string name="user_addr">Adresse: </string>
+    <string name="user_tel">Téléphone: </string>
+    <string name="user_code">Code postal: </string>
+    <string name="command_title">Récapitulatif de la commande</string>
+    <string name="user_magasin">Magasin sélectionné: </string>
+    <string name="user_magasin_code">Code postal: </string>
+    <string name="info_title">A propos </string>
+    <string name="info_version">Version: </string>
+    <string name="info_dev">Developpeur: </string>
+    <string name="info_contact">Contact: </string>
+    <string name="info_version2">1.0.3</string>
+    <string name="info_dev2">Fobis Samuel</string>
+    <string name="info_contact2">samfobis@gmail.com</string>
+    <string name="info_licence">All right reserved</string>
 
-    <string name=""></string>
 
     <!-- - - button - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <string name="user_cancel">Annuler</string>
+    <string name="user_save">Sauver</string>
+    <string name="user_edit">Modifier</string>
+    <string name="user_return">Retour</string>
+    <string name="user_map">Google map</string>
 
     <!-- - - -toast  - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <string name="user_toast_name">Entrez votre nom!</string>
+    <string name="user_toast_surname">Entrez votre nom de famille!</string>
+    <string name="user_toast_addr">Entrez votre adresse!</string>
+    <string name="user_toast_code">Entrez votre code postal!</string>
+    <string name="user_toast_tel">Entrez votre numéro de téléphone!</string>
+    <string name="user_toast_cart"> a été placé dans votre panier!</string>
 
+    <!-- - - -alert  - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <string name="popup_title_conf">Confirmation</string>
+    <string name="popup_title_conf2">Commande envoyé!</string>
+    <string name="popup_content_conf">La commande va être envoyer. \nSouhaitez-vous confirmer votre commande?\nMagasins: </string>
+    <string name="popup_validation">Valider</string>
+    <string name="popup_cancel">Annuler</string>
+    <string name="popup_ok">Ok!</string>
 </resources>

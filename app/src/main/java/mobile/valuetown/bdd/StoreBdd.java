@@ -91,7 +91,7 @@ public class StoreBdd {
         //on lui affecte toutes les infos grâce aux infos contenues dans le Cursor
         store.setId(c.getInt(NUM_COL_ID));
         store.setVille(c.getString(NUM_COL_Ville));
-        store.setCode(c.getString(NUM_COL_CODE));
+        //store.setCode(c.getString(NUM_COL_CODE));
         //On ferme le cursor
         c.close();
 
